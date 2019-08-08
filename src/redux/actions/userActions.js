@@ -9,7 +9,7 @@ export const loginUser = (userData, history) => (dispatch) =>{
             dispatch(getUserData());
             dispatch({
                 type : CLEAR_ERRORS
-            })
+            });
             history.push('/');
         })
         .catch(err =>{
@@ -48,7 +48,7 @@ export const signUpUser = (newUserData, history) => (dispatch) =>{
             dispatch(getUserData());
             dispatch({
                 type : CLEAR_ERRORS
-            })
+            });
             history.push('/');
         })
         .catch(err =>{
@@ -60,7 +60,7 @@ export const signUpUser = (newUserData, history) => (dispatch) =>{
 };
 
 const setAuthrozationHeader = (token) => {
-    const FBIdToken = `Bearer ${token}`
+    const FBIdToken = `Bearer ${token}`;
     localStorage.setItem('FBIdToken', `Bearer ${token}`);
     axios.defaults.headers.common['Authorization'] = FBIdToken;
 };

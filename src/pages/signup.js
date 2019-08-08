@@ -38,7 +38,7 @@ const styles = {
     progress : {
         position: 'absolute'
     }
-}
+};
 
 
 class Signup extends Component{
@@ -94,7 +94,7 @@ class Signup extends Component{
                             label="Email"
                             className={classes.textField}
                             helperText={errors.email}
-                            error={errors.email ? true : false}
+                            error={!!errors.email}
                             value={this.state.email}
                             onChange={this.handleChange}
                             fullWidth
@@ -106,7 +106,7 @@ class Signup extends Component{
                             type="password"
                             className={classes.textField}
                             helperText={errors.password}
-                            error={errors.password ? true : false}
+                            error={!!errors.password}
                             value={this.state.password}
                             onChange={this.handleChange}
                             fullWidth
@@ -118,7 +118,7 @@ class Signup extends Component{
                             type="password"
                             className={classes.textField}
                             helperText={errors.confirmPassword}
-                            error={errors.confirmPassword ? true : false}
+                            error={!!errors.confirmPassword}
                             value={this.state.confirmPassword}
                             onChange={this.handleChange}
                             fullWidth
@@ -129,7 +129,7 @@ class Signup extends Component{
                             label="Handle"
                             className={classes.textField}
                             helperText={errors.handle}
-                            error={errors.handle ? true : false}
+                            error={!!errors.handle}
                             value={this.state.handle}
                             onChange={this.handleChange}
                             fullWidth

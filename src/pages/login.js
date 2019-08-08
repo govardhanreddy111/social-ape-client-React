@@ -89,7 +89,7 @@ class Login extends Component{
                             label="Email"
                             className={classes.textField}
                             helperText={errors.email}
-                            error={errors.email ? true : false}
+                            error={!!errors.email}
                             value={this.state.email}
                             onChange={this.handleChange}
                             fullWidth
@@ -101,7 +101,7 @@ class Login extends Component{
                             type="password"
                             className={classes.textField}
                             helperText={errors.password}
-                            error={errors.password ? true : false}
+                            error={!!errors.password}
                             value={this.state.password}
                             onChange={this.handleChange}
                             fullWidth
@@ -133,7 +133,7 @@ Login.propTypes = {
     loginUser : PropTypes.func.isRequired,
     user : PropTypes.object.isRequired,
     UI : PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = (state) =>({
     user : state.user,
@@ -142,6 +142,6 @@ const mapStateToProps = (state) =>({
 
 const mapActionsToProps = {
     loginUser
-}
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Login));
