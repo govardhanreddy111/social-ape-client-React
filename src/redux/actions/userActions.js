@@ -65,3 +65,14 @@ const setAuthrozationHeader = (token) => {
     localStorage.setItem('FBIdToken', `Bearer ${token}`);
     axios.defaults.headers.common['Authorization'] = FBIdToken;
 };
+
+export const uploadImage = (formData) => (dispatch) =>{
+    dispatch({
+        type : LOADING_USER
+    });
+    axios.post('/user/image',formData)
+        .then(res =>{
+            dispatch(getUserData());
+        })
+        .catch(err => console.log(err));
+};
