@@ -6,6 +6,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { likeScream, unLikeScream} from "../redux/actions/dataActions";
+import DeleteScream from '../components/DeleteScream';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -48,7 +49,7 @@ class Scream extends Component{
         dayjs.extend(relativeTime);
         const { classes, scream : { body, createdAt, userImage, userHandle, screamId, likeCount, commentCount},
         user : {
-            authenticated
+            authenticated, credentials : {handle}
         }} = this.props;
         const likeButton = !authenticated ? (
             <MyButton tip="Like">
@@ -67,6 +68,9 @@ class Scream extends Component{
                 </MyButton>
             )
         );
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeleteScream screamId={screamId} />
+        ) : null;
         return(
             <Card className={classes.card}>
                 <CardMedia
@@ -74,6 +78,7 @@ class Scream extends Component{
                     title="profile image" className={classes.image}/>
                     <CardContent className={classes.content}>
                         <Typography variant="h5" color="primary" component={Link} to={`/users/${userHandle}`}>{userHandle}</Typography>
+                        {deleteButton}
                         <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                         <Typography variant="body1">{body}</Typography>
                         {likeButton}
